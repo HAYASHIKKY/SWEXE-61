@@ -11,12 +11,14 @@ class TopController < ApplicationController
       redirect_to root_path
     else
       #TODO: エラーメッセージ
+      flash[:notice] = 'ログインできませんでした'
       render 'login'
     end
   end
 
   def logout
     #TODO: ログアウトに成功したことをユーザに知らせる
+    flash[:notice] = 'ログアウトしました'
     session.delete(:login_uid)
     redirect_to root_path
   end
